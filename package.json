@@ -1,0 +1,17 @@
+{
+  "name": "com.ryuuk.testpackage",
+  "version": "0.1.0",
+  "displayName": "Test Package",
+  "description": "This is a test package",
+  "unity": "2021.3",
+  "unityRelease": "10f1",
+  "dependencies": {},
+  "keywords": [
+    "Test"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Robin",
+    "email": "unbalanced.freaks@gmail.com"
+  }
+}
