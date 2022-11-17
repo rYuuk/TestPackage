@@ -1,0 +1,42 @@
+﻿name: Test Runner
+
+on: push
+
+jobs:
+  runAllTests:
+    name: ${{ matrix.unityVersion }} ${{ matrix.testMode }} tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode:
+          - editmode
+        unityVersion:
+          - 2021.3.7f1
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: "https://github.com/rYuuk/PackageSubmoduleInUnityProject"
+          submodules: true
+      - run: |
+          pwd
+          cd Assets/TestPackage
+          git checkout main
+          git pull origin main
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-
+          restore-keys: |
+            Library-
+      - name: Tests 🛠️
+        id: tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: ${{ matrix.unityVersion }}
+          testMode: ${{ matrix.testMode }}
+          projectPath: ${{ matrix.projectPath }}
+          checkName: ${{ matrix.unityVersion }} ${{ matrix.testMode }} tests result
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
