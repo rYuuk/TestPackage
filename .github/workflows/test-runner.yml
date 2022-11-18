@@ -28,7 +28,7 @@ jobs:
           pwd
           git status
           git fetch
-          git checkout ${{ github.event.pull_request.head.ref }}
+          git checkout origin/${{ github.event.pull_request.head.ref }}
           git pull origin ${{ github.event.pull_request.head.ref }}
       - uses: actions/cache@v3
         with:
