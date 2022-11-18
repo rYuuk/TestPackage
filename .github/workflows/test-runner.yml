@@ -23,9 +23,10 @@ jobs:
       - name: Checkout submodule branch
         run: |
           cd Assets/TestPackage
-          echo ${{ steps.extract_branch.outputs.branch }}
+          echo ${GITHUB_REF#refs/heads/}
+          echo ${GITHUB_REF##*/}
           git checkout ${GITHUB_REF##*/}
-          git pull origin main
+          git pull origin ${GITHUB_REF##*/}
       - uses: actions/cache@v3
         with:
           path: Library
