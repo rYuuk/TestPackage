@@ -25,6 +25,9 @@ jobs:
         run: |
           pwd
           cd Assets/TestPackage
+          pwd
+          git status
+          git fetch
           git checkout ${{ github.event.pull_request.head.ref }}
           git pull origin ${{ github.event.pull_request.head.ref }}
       - uses: actions/cache@v3
