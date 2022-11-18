@@ -1,6 +1,6 @@
 {
   "name": "com.ryuuk.testpackage",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "displayName": "Test Package",
   "description": "This is a test package",
   "unity": "2021.3",
