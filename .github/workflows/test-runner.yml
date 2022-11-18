@@ -20,6 +20,7 @@ jobs:
         with:
           repository: "rYuuk/PackageSubmoduleInUnityProject"
           submodules: true
+          fetch-depth: 0
           token: ${{ secrets.PAT }}
       - name: Checkout submodule branch
         run: |
