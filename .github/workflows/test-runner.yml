@@ -20,6 +20,7 @@ jobs:
         with:
           repository: "rYuuk/PackageSubmoduleInUnityProject"
           submodules: true
+          token: ${{ secrets.PAT }}
       - name: Checkout submodule branch
         run: |
           cd Assets/TestPackage
