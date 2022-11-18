@@ -14,18 +14,15 @@ jobs:
         unityVersion:
           - 2021.3.7f1
     steps:
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
       - uses: actions/checkout@v3
         with:
           repository: "rYuuk/PackageSubmoduleInUnityProject"
           submodules: true
-      - run: |
-          pwd
+      - name: Checkout submodule branch
+        run: |
           cd Assets/TestPackage
-          git checkout ${{ steps.extract_branch.outputs.branch }}
+          echo ${{ steps.extract_branch.outputs.branch }}
+          git checkout ${GITHUB_REF##*/}
           git pull origin main
       - uses: actions/cache@v3
         with:
